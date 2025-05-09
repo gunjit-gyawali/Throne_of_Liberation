@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chapter 1 - The Day It All Changed</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+	
+	/* Prevent text selection */
+.noselect {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+
+    body {
+      background-color: #121212;
+      color: #ffffff;
+      padding: 80px 100px;
+      line-height: 1.8;
+      font-size: 20px;
+    }
+
+    p {
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+      font-size: 20px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #bb86fc;
+      padding-bottom: 10px;
+      animation: slideIn 1s ease-out;
+    }
+
+    h1 {
+      font-size: 30px;
+      color: #bb86fc;
+    }
+
+    .custom-dropdown {
+      position: relative;
+      width: 180px;
+      z-index: 100;
+    }
+
+    .custom-dropdown button {
+      background: #1e1e1e;
+      color: white;
+      padding: 10px 18px;
+      font-size: 16px;
+      border: 2px solid #bb86fc;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      text-align: left;
+    }
+
+    .custom-dropdown ul {
+      list-style: none;
+      position: absolute;
+      top: 110%;
+      left: 0;
+      width: 100%;
+      background: #1e1e1e;
+      border: 2px solid #bb86fc;
+      border-radius: 8px;
+      max-height: 140px;
+      overflow-y: auto;
+      display: none;
+    }
+
+    .custom-dropdown.open ul {
+      display: block;
+    }
+
+    .custom-dropdown li {
+      padding: 10px 16px;
+      cursor: pointer;
+    }
+
+    .custom-dropdown li:hover {
+      background-color: #2a2a2a;
+    }
+
+    p:nth-of-type(n) {
+      animation-delay: calc(0.3s + 0.05s * var(--i));
+    }
+
+    .next-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #6200ea;
+      color: #fff;
+      padding: 14px 24px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, background 0.3s ease;
+      z-index: 10;
+      opacity: 0;
+      animation: fadeIn 1.5s ease forwards;
+      animation-delay: 1s;
+    }
+
+    .next-btn:hover {
+      background-color: #7e3ff2;
+      transform: scale(1.05);
+    }
+	
+		.home-btn {
+      bottom: 20px;
+      padding: 14px 24px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, background 0.3s ease;
+      z-index: 10;
+      opacity: 0;
+      animation: fadeIn 1.5s ease forwards;
+      animation-delay: 1s;
+    }
+	
+	.home-btn {
+      right: 20px;
+      background-color: #6200ea;
+      color: #fff;
+    }
+
+    .home-btn:hover {
+      background-color: #7e3ff2;
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    strong {
+      color: #0096FF;
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .custom-dropdown {
+        width: 100%;
+      }
+
+      body {
+        padding: 20px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="index.html"><button class="home-btn">Home</button></a> <br>
+
+  <div class="header">
+     <div class="noselect">
+   <h1>Chapter 1 - The Day It All Changed</h1>
+     </div>
+    <div class="custom-dropdown" id="chapterDropdown">
+      <button onclick="toggleDropdown()"><p align="center">Chapter 1 --▼</p></button>
+      <ul>
+        <li onclick="goTo('chapter1.html')">Chapter 1</li>
+        <li onclick="goTo('chapter2.html')">Chapter 2</li>
+        <li onclick="goTo('chapter3.html')">Chapter 3</li>
+        <li onclick="goTo('chapter4.html')">Chapter 4</li>
+        <li onclick="goTo('chapter5.html')">Chapter 5</li>
+        <li onclick="goTo('chapter6.html')">Chapter 6</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="noselect">
+    <p style="--i:1;">
+      The rain wouldn’t let up.<br><br>
+      It came down hard and heavy, pounding the ground in messy, furious waves. The dirt beneath Kiyoshi’s knees had long since turned to mud, thick and cold, mixing with something darker—something red. His brother’s blood pooled beneath him, spreading into the earth like the world itself was trying to take him back.
+    </p>
+    <p style="--i:2;">
+      Thunder rumbled in the distance. He barely heard it.<br><br>
+      Everything sounded far away now. Faint. Like he was underwater. Like he wasn’t really here.
+    </p>
+    <p style="--i:3;">
+      He didn’t know how long he’d been there, kneeling. Could’ve been minutes. Could’ve been hours. Time didn’t feel like it meant anything anymore. All he knew was that his fingers were still wrapped around his brother’s hand—and it was cold. Still. Lifeless.
+    </p>
+    <p style="--i:4;">
+      Kiyoshi’s throat tightened. He tried to speak, but the words cracked before they reached his lips.<br><br>
+      Tears slipped down his cheeks and vanished into the rain.<br><br>
+      “This... all started that day…”<br><br>
+      The words barely escaped him. The storm swallowed them whole.<br><br>
+      But he knew it was true.<br><br>
+      It all began then. The moment everything broke.
+    </p>
+    <p style="--i:5;" >
+      <strong>Flashback: The Ring of Fate</strong><br><br>
+      They always said Everveil Forest was cursed.<br><br>
+      Too quiet. Too dense. The kind of place where stories get born—and people disappear.
+    </p>
+    <p style="--i:6;">
+      Kiyoshi had never believed in the stories, not really. But that day… something was different.<br><br>
+      The mist hung low, thick as smoke, weaving between the trunks like it had a mind of its own. Every step he took felt slower, heavier, like the forest wanted him to stop—but also wanted him to keep going.
+    </p>
+    <p style="--i:7;">
+      He wasn’t supposed to be there. He knew that.<br><br>
+      But something pulled at him. Not a sound. Not a voice. Just… a feeling. Like something waiting just ahead, just out of sight.
+    </p>
+    <p style="--i:8;">
+      Then he saw it.<br><br>
+      Half-buried in moss and dirt, tucked beneath the roots of an old twisted tree—a ring. Jet black. Lined with silver markings that seemed to shimmer even in the dim light. Not glow. Not shine. Pulse. Like it was alive.
+    </p>
+    <p style="--i:9;">
+      Kiyoshi stared.<br><br>
+      He should’ve turned around. Should’ve walked away. He knew better. But curiosity had already wrapped its fingers around his spine.
+    </p>
+    <p style="--i:10;">
+      Before he realized it, he was reaching down.<br><br>
+      His fingers brushed against the metal—cold as ice.
+    </p>
+    <p style="--i:11;">
+      And then… he slid it on.<br><br>
+      The forest went silent.<br><br>
+      The air around him shifted. Thickened. Shadows uncoiled from the ring like smoke spilling from a broken jar. They twisted through the air, wrapping around him, too fast to run, too strange to understand.
+    </p>
+    <p style="--i:12;">
+      Then—eyes.<br><br>
+      Floating in the dark. Deep red. Burning. Watching.
+    </p>
+    <p style="--i:13;">
+      Kiyoshi’s heart stopped.<br><br>
+      And the voice came.
+    </p>
+    <p style="--i:14;">
+      “Lord of the Dead… the time has come.”<br><br>
+      It wasn’t a whisper. It wasn’t even sound. It was something deeper. It echoed behind his eyes. Coiled into his spine. Heavy. Ancient. Absolute.
+    </p>
+    <p style="--i:15;">
+      “Awaken your power. Protect them. I will return when the time is right.”<br><br>
+      And just like that—gone.
+    </p>
+    <p style="--i:16;">
+      The shadows vanished. The eyes disappeared. The mist cleared.<br><br>
+      And the forest was normal again.<br><br>
+      But Kiyoshi wasn’t.
+    </p>
+    <p style="--i:17;">
+      He stumbled back, breathing hard, his body trembling like he’d just stepped out of a nightmare. The ring still sat on his finger. It looked the same—but it felt different. He felt different.
+    </p>
+    <p style="--i:18;">
+      Something had changed.<br><br>
+      He didn’t know what it meant. Not then.<br><br>
+      But later… when everything fell apart… he’d look back on that moment and know.<br><br>
+      That was the day his fate began to move.
+    </p>
+    <br><br><br><br>
+  </div>
+
+  <a href="chapter2.html"><button class="next-btn">Next Chapter →</button></a>
+
+  <script>
+    function toggleDropdown() {
+      document.getElementById('chapterDropdown').classList.toggle('open');
+    }
+
+    function goTo(url) {
+      window.location.href = url;
+    }
+
+    // Close if clicked outside
+    window.addEventListener('click', function(e) {
+      const dropdown = document.getElementById('chapterDropdown');
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove('open');
+      }
+    });
+	
+	 // Disable right-click
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  }, false);
+
+  // Disable copy event
+  document.addEventListener('copy', function(e) {
+    e.preventDefault();
+    alert("Copying is disabled on this site.");
+  });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chapter 2 - The Shattered World</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+	
+	/* Prevent text selection */
+.noselect {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+
+    body {
+      background-color: #121212;
+      color: #ffffff;
+      padding: 80px 100px;
+      line-height: 1.8;
+      font-size: 20px;
+    }
+
+    p {
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+      font-size: 20px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #bb86fc;
+      padding-bottom: 10px;
+      animation: slideIn 1s ease-out;
+    }
+
+    h1 {
+      font-size: 30px;
+      color: #bb86fc;
+    }
+
+    .custom-dropdown {
+      position: relative;
+      width: 180px;
+      z-index: 100;
+    }
+
+    .custom-dropdown button {
+      background: #1e1e1e;
+      color: white;
+      padding: 10px 18px;
+      font-size: 16px;
+      border: 2px solid #bb86fc;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      text-align: left;
+    }
+
+    .custom-dropdown ul {
+      list-style: none;
+      position: absolute;
+      top: 110%;
+      left: 0;
+      width: 100%;
+      background: #1e1e1e;
+      border: 2px solid #bb86fc;
+      border-radius: 8px;
+      max-height: 140px;
+      overflow-y: auto;
+      display: none;
+    }
+
+    .custom-dropdown.open ul {
+      display: block;
+    }
+
+    .custom-dropdown li {
+      padding: 10px 16px;
+      cursor: pointer;
+    }
+
+    .custom-dropdown li:hover {
+      background-color: #2a2a2a;
+    }
+
+    p:nth-of-type(n) {
+      animation-delay: calc(0.3s + 0.05s * var(--i));
+    }
+
+    .next-btn,
+    .prev-btn {
+      position: fixed;
+      bottom: 20px;
+      padding: 14px 24px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, background 0.3s ease;
+      z-index: 10;
+      opacity: 0;
+      animation: fadeIn 1.5s ease forwards;
+      animation-delay: 1s;
+    }
+
+    .next-btn {
+      right: 20px;
+      background-color: #6200ea;
+      color: #fff;
+    }
+
+    .next-btn:hover {
+      background-color: #7e3ff2;
+      transform: scale(1.05);
+    }
+	
+	.home-btn {
+      bottom: 20px;
+      padding: 14px 24px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, background 0.3s ease;
+      z-index: 10;
+      opacity: 0;
+      animation: fadeIn 1.5s ease forwards;
+      animation-delay: 1s;
+    }
+	
+	.home-btn {
+      right: 20px;
+      background-color: #6200ea;
+      color: #fff;
+    }
+
+    .home-btn:hover {
+      background-color: #7e3ff2;
+      transform: scale(1.05);
+    }
+
+    .prev-btn {
+      left: 20px;
+      background-color: #6200ea;
+      color: #fff;
+    }
+
+    .prev-btn:hover {
+      background-color: #000080;
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    strong {
+      color: #0096FF;
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .custom-dropdown {
+        width: 100%;
+      }
+
+      body {
+        padding: 20px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="index.html"><button class="home-btn">Home</button></a> <br>
+
+  <div class="header">
+   <div class="noselect">
+    <h1>Chapter 2 - The Shattered World</h1>
+	</div>
+    <div class="custom-dropdown" id="chapterDropdown">
+      <button onclick="toggleDropdown()"><p align="center">Chapter 2--▼</p></button>
+      <ul>
+        <li onclick="goTo('chapter1.html')">Chapter 1</li>
+        <li onclick="goTo('chapter2.html')">Chapter 2</li>
+        <li onclick="goTo('chapter3.html')">Chapter 3</li>
+        <li onclick="goTo('chapter4.html')">Chapter 4</li>
+        <li onclick="goTo('chapter5.html')">Chapter 5</li>
+        <li onclick="goTo('chapter6.html')">Chapter 6</li>
+      </ul>
+    </div>
+  </div>
+
+   <div class="noselect">
+    <p style="--i:1;">
+      A long time ago, the world wasn’t whole—but it was in harmony. Six great lands floated above an endless sea, massive islands suspended in the sky like drifting continents.
+    </p>
+    <p style="--i:2;">
+      They weren’t named by where they sat in the world, but by what they were—each one holding a piece of existence itself.
+    </p>
+    <p style="--i:3;"><strong>The Land of the Present:</strong> vibrant, bustling, the heart of culture, trade, and balance.</p>
+    <p style="--i:4;"><strong>The Land of the Past:</strong> steeped in tradition, cloaked in ancient history and long-forgotten wisdom.</p>
+    <p style="--i:5;"><strong>The Land of the Future:</strong> a place of progress and invention, where ambition pushed the edge of what was possible.</p>
+    <p style="--i:6;"><strong>The Land of Heaven:</strong> serene and still, closest to the sky, where spirits whispered and prayers carried weight.</p>
+    <p style="--i:7;"><strong>The Land of Hell:</strong> wild, untamed, a raw surge of chaos and magic unbound.</p>
+    <p style="--i:8;"><strong>The Land of Power:</strong> the core of strength, where warriors and mages of legend were born—and where greatness was forged.</p>
+    <p style="--i:9;">
+      In this world, magic wasn’t rare. It was life. It flowed through the air like wind, shimmered in the water, flickered in fire.
+    </p>
+    <p style="--i:10;">
+      And above them all stood the Archons—six rulers, each the embodiment of their land’s essence. They were more than leaders. They were guardians. Symbols of peace. Anchors of balance.
+    </p>
+    <p style="--i:11;">
+      For centuries, the lands coexisted. Separate, but connected. Different, but united.
+    </p>
+    <p style="--i:12;">
+      Until the sky bled.
+    </p>
+    <p style="--i:13;">
+      Fifteen years ago, it came without warning. Meteors, massive and burning, tore through the clouds like falling gods. One struck each land.
+    </p>
+    <p style="--i:14;">
+      From their craters crawled things that looked like humans—but weren’t. They wore stolen skin like costumes. But their blood was black. Their eyes hollow. Their magic, wrong.
+    </p>
+    <p style="--i:15;">
+      And with each meteor came a commander. A creature of nightmares, leading armies of star-born monsters.
+    </p>
+    <p style="--i:16;">
+      The Archons fought. But one by one, they fell.
+    </p>
+    <p style="--i:17;">
+      Until only one remained—the Land of Power.
+    </p>
+    <p style="--i:18;">
+      There, the final Archon made his stand. He fought for twenty days and twenty nights. In the end, he gave everything—his magic, his soul—to create a seal around the island. A prison. A warning.
+    </p>
+    <p style="--i:19;">
+      The world survived. But it fractured.
+    </p>
+    <p style="--i:20;">
+      The lands sealed themselves off. Travel was forbidden. Trust shattered. Peace became myth.
+    </p>
+    <p style="--i:21;"><strong>Present Day – Kiyoshi Aetherius</strong></p>
+    <p style="--i:22;">
+      Fifteen years have passed.
+    </p>
+    <p style="--i:23;">
+      The Land of the Present is quiet now—but not peaceful. Magic still exists, but it’s tightly controlled. People don’t talk about the meteors. Or the monsters. Or the Archons.
+    </p>
+    <p style="--i:24;">
+      On the edge of a forest road, a boy walks alone.
+    </p>
+    <p style="--i:25;">
+      His name is <strong>Kiyoshi Aetherius</strong>. Seventeen years old. Eyes like a storm. In his hand: a ring.
+    </p>
+    <p style="--i:26;">
+      He doesn’t know why it whispers. He doesn’t know why dreams feel heavier. But something inside him has changed.
+    </p>
+    <p style="--i:27;">
+      The wind stills. The sky darkens. And the ring begins to glow.
+    </p>
+    <p style="--i:28;">
+      Kiyoshi doesn’t know it yet, but his blood carries the echo of the Archons.
+    </p>
+    <p style="--i:29;">
+      And far, far away, on an island sealed for fifteen years… the barrier begins to crack.
+    </p>
+    <br><br><br><br>
+  </div>
+
+  <a href="chapter1.html"><button class="prev-btn">← Previous Chapter</button></a>
+  <a href="chapter3.html"><button class="next-btn">Next Chapter →</button></a>
+
+  <script>
+    function toggleDropdown() {
+      document.getElementById('chapterDropdown').classList.toggle('open');
+    }
+
+    function goTo(url) {
+      window.location.href = url;
+    }
+
+    window.addEventListener('click', function(e) {
+      const dropdown = document.getElementById('chapterDropdown');
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove('open');
+      }
+    });
+	// Disable right-click
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  }, false);
+
+  // Disable copy event
+  document.addEventListener('copy', function(e) {
+    e.preventDefault();
+    alert("Copying is disabled on this site.");
+  });
+  </script>
+
+</body>
+</html>

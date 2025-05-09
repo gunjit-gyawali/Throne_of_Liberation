@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Throne of Liberation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #121212;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .book-container {
+      background-color: #1e1e1e;
+      width: 100%;
+      max-width: 900px;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .header {
+      background-color: #000;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      padding: 30px;
+    }
+
+    @media(min-width: 768px) {
+      .content {
+        flex-direction: row;
+      }
+    }
+
+    .book-image {
+      flex: 1;
+      background: #2c2c2c;
+      border-radius: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+    }
+
+    .book-image img {
+      width: 100%;
+      max-width: 280px;
+      border-radius: 20px;
+    }
+
+    .book-details {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .book-details p {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .start-btn {
+      align-self: start;
+      margin: 15px 0;
+      padding: 15px 40px;
+      font-size: 20px;
+      background: #6200ea;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      animation: popIn 1.2s ease;
+    }
+
+    .start-btn:hover {
+      background: #7e3ff2;
+      transform: scale(1.05);
+    }
+
+    .summary {
+      background: #2c2c2c;
+      padding: 15px;
+      border-radius: 10px;
+      line-height: 1.6;
+    }
+
+    .read-more {
+      color: #bb86fc;
+      cursor: pointer;
+      font-size: 16px;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    .chapters {
+      margin-top: 60px;
+      padding: 0 30px 30px;
+    }
+
+    .chapter-preview {
+      background: #2c2c2c;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      transition: background 0.3s;
+    }
+
+    .chapter-preview:hover {
+      background: #383838;
+    }
+
+    .chapter-preview a {
+      text-decoration: none;
+      color: #ffffff;
+      display: block;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.8);
+    }
+
+    .modal-content {
+      background-color: #2c2c2c;
+      margin: 10% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 90%;
+      max-width: 600px;
+      border-radius: 10px;
+      color: white;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes popIn {
+      0% { opacity: 0; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="book-container">
+    <div class="header">Throne of Liberation</div>
+    <div class="content">
+      <div class="book-image">
+        <img src="book.jpeg" alt="Book Cover">
+      </div>
+      <div class="book-details">
+        <p><strong>Author</strong> - Gunjit Gyawali</p>
+        <p><strong>Genre</strong> -  Fantasy, Action, Adventure, Comedy, Mystery </p>
+        <p><strong>Started</strong> - 2025</p>
+        <p><strong>Status</strong> - Ongoing</p>
+        <p><strong>Chapters</strong> - 2</p>
+        <a href="chapter1.html"><button class="start-btn">Start Reading</button></a>
+        <div class="summary">
+          Fifteen years ago, the sky shattered. Fire rained down, and from it came beings that looked human—but weren’t. The six great lands, once ruled by powerful Archons, fell one by one.
+		  <br>
+          <span class="read-more" onclick="openModal()">Read more...</span>
+        </div>
+      </div>
+    </div>
+	<br>
+	<h1 align="center">Chapters</h1>
+    <div class="chapters">
+      <div class="chapter-preview">
+        <a href="chapter2.html"><strong>Chapter 2:</strong>  The Shattered World </a>
+      </div>
+      <div class="chapter-preview">
+        <a href="chapter1.html"><strong>Chapter 1:</strong>  The Day It All Changed </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Popup -->
+  <div id="summaryModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <p>
+        Fifteen years ago, the sky shattered. Fire rained down, and from it came beings that looked human—but weren’t. The six great lands, once ruled by powerful Archons, fell one by one... until silence claimed them all. Now, the world is broken, divided, and afraid.
+
+In the quiet Land of the Present, Kiyoshi Aetherius discovers a ring buried deep in the forest—a relic that shouldn’t exist, pulsing with a power that shouldn’t be here. The moment he wears it, something ancient awakens.
+
+Whispers of the dead. A name long forgotten. A seal beginning to break.
+
+Chosen by a legacy buried beneath blood and silence, Kiyoshi is about to uncover a truth the world was never meant to remember.
+
+Some say the Archons were heroes.
+Some say they were gods.
+
+Kiyoshi will become something far more dangerous.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    function openModal() {
+      document.getElementById("summaryModal").style.display = "block";
+    }
+
+    function closeModal() {
+      document.getElementById("summaryModal").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById("summaryModal");
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
